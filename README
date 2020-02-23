@@ -1,0 +1,12 @@
+To generate an app:
+install the create-react-app package:
+npm install create-react-app -g
+
+Navigate to the directory to make your app and run:
+create-react-app yourappname --scripts-version 1.1.5
+(the scripts version on the end still uses the latest version of react
+but was used in the tutorial I did to make sure the starting structure
+was the same.)
+
+Start the server:
+npm start
