@@ -10,3 +10,5 @@ was the same.)
 
 Start the server:
 npm start
+
+The list of supported events can be found at https://reactjs.org/docs/events.html#supported-events
