@@ -8,6 +8,9 @@ create-react-app yourappname --scripts-version 1.1.5
 but was used in the tutorial I did to make sure the starting structure
 was the same.)
 
+If you are starting with an existing react app instead of creating your own, navigate to the app directory and run:
+npm install
+
 Start the server:
 npm start
 
