@@ -5,9 +5,9 @@ import Person from "./Person/Person";
 class App extends Component {
   state = {
     persons: [
-      { name: "Andy", age: 36 },
-      { name: "Harrison", age: 1 },
-      { name: "Gizmo", age: 9 }
+      { id: 'jkdls', name: "Andy", age: 36 },
+      { id: 'iewoa', name: "Harrison", age: 1 },
+      { id: 'iwaos', name: "Gizmo", age: 9 }
     ],
     otherState: 'some other value',
     showPersons: false
@@ -16,7 +16,7 @@ class App extends Component {
   deletePersonHandler = (personIndex) => {
     // need to deep copy the array so we don't alter the original
     // const persons = this.state.persons.slice(); // copies the array
-    const persons = { ...this.state.persons }; // es6 way to copy the array
+    const persons = [...this.state.persons]; // es6 way to copy the array
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   }
@@ -56,7 +56,9 @@ class App extends Component {
             return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
-              age={person.age} />
+              age={person.age}
+              key={person.id}
+            />
           })}
         </div >
       );
