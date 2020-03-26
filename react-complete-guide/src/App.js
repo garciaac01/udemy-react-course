@@ -92,12 +92,13 @@ class App extends Component {
       );
     }
 
-    let charComponents = (
+    const charComponents = (
       <div>
         {[...this.state.inputValue].map((letter, index) => {
           return <CharComponent
             letter={letter}
             click={() => this.deleteLetterHandler(index)}
+            key={index}
           />
         })}
       </div>
@@ -111,7 +112,7 @@ class App extends Component {
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
-        <input type="text" value={this.state.inputValue} onChange={(event) => this.inputChangeHandler(event)}></input>
+        <input type="text" value={this.state.inputValue} onChange={this.inputChangeHandler}></input>
         <p>{this.state.inputValue.length}</p>
         <ValidationComponent textLength={this.state.inputValue.length} />
         {charComponents}
