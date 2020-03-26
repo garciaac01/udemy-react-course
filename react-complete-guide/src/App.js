@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from "./Person/Person";
+import ValidationComponent from "./ValidationComponent/ValidationComponent";
+import CharComponent from './CharComponent/CharComponent';
 
 class App extends Component {
   state = {
@@ -10,7 +12,8 @@ class App extends Component {
       { id: 'iwaos', name: "Gizmo", age: 9 }
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    inputValue: ""
   };
 
   deletePersonHandler = (personIndex) => {
@@ -19,6 +22,12 @@ class App extends Component {
     const persons = [...this.state.persons]; // es6 way to copy the array
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
+  }
+
+  deleteLetterHandler = (letterIndex) => {
+    const letters = [...this.state.inputValue];
+    letters.splice(letterIndex, 1);
+    this.setState({ inputValue: letters.join('') });
   }
 
   nameChangedHandler = (event, id) => {
@@ -50,6 +59,12 @@ class App extends Component {
     console.log(this.state.showPersons);
   };
 
+  inputChangeHandler = (event) => {
+    this.setState({
+      inputValue: event.target.value
+    })
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -77,6 +92,17 @@ class App extends Component {
       );
     }
 
+    let charComponents = (
+      <div>
+        {[...this.state.inputValue].map((letter, index) => {
+          return <CharComponent
+            letter={letter}
+            click={() => this.deleteLetterHandler(index)}
+          />
+        })}
+      </div>
+    );
+
     return (
       <div className="App" >
         <h1>Hi, I'm a React App</h1>
@@ -85,6 +111,10 @@ class App extends Component {
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
+        <input type="text" value={this.state.inputValue} onChange={(event) => this.inputChangeHandler(event)}></input>
+        <p>{this.state.inputValue.length}</p>
+        <ValidationComponent textLength={this.state.inputValue.length} />
+        {charComponents}
       </div>
     );
     // return React.createElement("div", { className: "App" }, React.createElement("h1", null, "Does this work now???"));
