@@ -29,3 +29,6 @@ npm install --save radium
 This should be done in the project directory.
 I believe the --save adds it to you package.json file.
 I think this is used similar to requirements.txt
+
+Install styled-components with:
+npm install --save styled-components
