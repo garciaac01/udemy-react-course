@@ -22,3 +22,10 @@ Introducing JSX: https://reactjs.org/docs/introducing-jsx.html
 Rendering Elements: https://reactjs.org/docs/rendering-elements.html
 Components & Props: https://reactjs.org/docs/components-and-props.html
 Listenable Events: https://reactjs.org/docs/events.html
+
+
+Install Radium with:
+npm install --save radium
+This should be done in the project directory.
+I believe the --save adds it to you package.json file.
+I think this is used similar to requirements.txt
