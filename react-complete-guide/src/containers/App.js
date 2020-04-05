@@ -4,6 +4,11 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+
   state = {
     persons: [
       { id: 'jkdls', name: "Andy", age: 36 },
@@ -13,6 +18,19 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props)
+    return state;
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
 
   deletePersonHandler = (personIndex) => {
     // need to deep copy the array so we don't alter the original
@@ -52,6 +70,7 @@ class App extends Component {
   };
 
   render() {
+    console.log('[App.js] render');
     // render runs every time React refreshes the page, so we can run some code in here.
     let persons = null;
 
