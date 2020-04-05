@@ -3,10 +3,26 @@ import classes from './Cockpit.css';
 
 const cockpit = (props) => {
 
+    // Using an empty array as the second parameter
+    // would cause this to only run the first time the page
+    // is loaded.
+    // useEffect(() => {
+    //     console.log('[Cockpit.js] useEffect');
+    //     // Can send http request in here, etc...
+    //     setTimeout(() => {
+    //         alert('Saved data to cloud.');
+    //     }, 1000);
+    // }, []);
+
+    // This example of useEffect would only run when
+    // props.persons is updated.
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
         // Can send http request in here, etc...
-    });
+        setTimeout(() => {
+            alert('Saved data to cloud.');
+        }, 1000);
+    }, [props.persons]);
 
     const assignedClasses = [];
     let btnClass = '';
