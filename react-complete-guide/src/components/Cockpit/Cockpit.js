@@ -6,6 +6,8 @@ const cockpit = (props) => {
     // Using an empty array as the second parameter
     // would cause this to only run the first time the page
     // is loaded.
+    // This is essentially the equivalent of "componentDidMount"
+    // for class based components.
     // useEffect(() => {
     //     console.log('[Cockpit.js] useEffect');
     //     // Can send http request in here, etc...
