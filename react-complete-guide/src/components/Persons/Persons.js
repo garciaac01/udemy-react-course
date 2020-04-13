@@ -13,7 +13,17 @@ class Persons extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponentUpdate');
-        return true;
+
+        // important to make sure you are creating a new array
+        // when you updated persons, like we do with [...this.state.persons]
+        // since this comparison is for arrays, which are reference types.
+        // If you updated the existing array, the location in memory
+        // would not have change and this comparison could give incorrect results.
+        if (nextProps.persons !== this.props.persons) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
