@@ -21,10 +21,11 @@ const cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
         // Can send http request in here, etc...
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             alert('Saved data to cloud.');
         }, 1000);
         return () => {
+            clearTimeout(timer);
             console.log('[Cockpit.js] cleanup work in useEffect');
         }
     }, []); // runs when component gets destroyed (because of the empty array second param)
