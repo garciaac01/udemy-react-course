@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component {
+class Persons extends PureComponent {
     // static getDerivedStateFromProps(props, state) {
     //     console.log('[Persons.js] getDerivedStateFromProps');
     //     return state;
@@ -11,20 +11,20 @@ class Persons extends Component {
     //     console.log('[Persons.js] compoentWillReceiveProps', props);
     // }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate');
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponentUpdate');
 
-        // important to make sure you are creating a new array
-        // when you updated persons, like we do with [...this.state.persons]
-        // since this comparison is for arrays, which are reference types.
-        // If you updated the existing array, the location in memory
-        // would not have change and this comparison could give incorrect results.
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     // important to make sure you are creating a new array
+    //     // when you updated persons, like we do with [...this.state.persons]
+    //     // since this comparison is for arrays, which are reference types.
+    //     // If you updated the existing array, the location in memory
+    //     // would not have change and this comparison could give incorrect results.
+    //     if (nextProps.persons !== this.props.persons) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
