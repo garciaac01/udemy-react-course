@@ -24,7 +24,18 @@ const cockpit = (props) => {
         setTimeout(() => {
             alert('Saved data to cloud.');
         }, 1000);
-    }, [props.persons]);
+        return () => {
+            console.log('[Cockpit.js] cleanup work in useEffect');
+        }
+    }, []); // runs when component gets destroyed (because of the empty array second param)
+
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+
+        return () => {
+            console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+        }
+    }); // runs on every update because of no second argument
 
     const assignedClasses = [];
     let btnClass = '';
