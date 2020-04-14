@@ -5,13 +5,22 @@ import withClass from '../../../hoc/withClass';
 import classes from "./Person.css";
 
 class Person extends Component {
+    componentDidMount() {
+        this.inputElement.focus();
+    }
+
     render() {
         console.log('[Person.js] rendering...');
         return (
             <Fragment>
-                <p key="i1" onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
-                <p key="i2">{this.props.children}</p>
-                <input key="i3" type="text" onChange={this.props.changed} value={this.props.name} />
+                <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
+                <p>{this.props.children}</p>
+                <input
+                    ref={(inputEl) => { this.inputElement = inputEl }}
+                    type="text"
+                    onChange={this.props.changed}
+                    value={this.props.name}
+                />
             </Fragment>
         );
     }
