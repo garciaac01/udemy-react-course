@@ -126,7 +126,6 @@ class App extends Component {
             personsLength={this.state.persons.length}
             showPersons={this.state.showPersons}
             clicked={this.togglePersonsHandler}
-            login={this.loginHandler}
           /> : null}
           {persons}
         </AuthContext.Provider>
