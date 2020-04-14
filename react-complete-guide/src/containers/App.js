@@ -19,7 +19,8 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -84,6 +85,10 @@ class App extends Component {
     console.log(this.state.showPersons);
   };
 
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
+
   render() {
     console.log('[App.js] render');
     // render runs every time React refreshes the page, so we can run some code in here.
@@ -95,6 +100,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
+          isAuthenticated={this.state.authenticated}
         />
       );
     }
@@ -113,6 +119,7 @@ class App extends Component {
           personsLength={this.state.persons.length}
           showPersons={this.state.showPersons}
           clicked={this.togglePersonsHandler}
+          login={this.loginHandler}
         /> : null}
         {persons}
       </Fragment>
